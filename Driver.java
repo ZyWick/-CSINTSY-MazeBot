@@ -14,7 +14,7 @@ public class Driver {
      * 5 - end
      */
     public static void main(String[] args) {
-        try (Scanner txtFileReader = new Scanner(new File("maze.txt")).useLocale(Locale.ENGLISH)) {
+        try (Scanner txtFileReader = new Scanner(new File("/maze.txt")).useLocale(Locale.ENGLISH)) {
             txtFileReader.useDelimiter("\\n");
             int n = txtFileReader.nextInt();
             char c;
@@ -47,10 +47,10 @@ public class Driver {
             }
 
             Mazebot mazeBot = new Mazebot(map, n, goalX, goalY, startX, startY);
-    
+
 
         } catch (FileNotFoundException e) {
-            
+
         }
     }
 }
