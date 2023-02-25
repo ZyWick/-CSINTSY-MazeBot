@@ -1,80 +1,74 @@
-import java.util.concurrent.TimeUnit;
 public class Mazebot {
-    private int maze[][];
+    private char maze[][];
     private int n;
     private int goalX;
     private int goalY;
-    private MazeView view;
     private int numVisited = 0;
+    public boolean run = false;
 
     /*
-     * 0 - blank - black
-     * 1 - wall - red
-     * 2 - visited - yellow
-     * 3 - final path - green
-     * 4 - start - Blue
-     * 5 - goal - white
+     * '.' - blank - black
+     * '#' - wall - red
+     * 'O' - visited - yellow
+     * 'X' - final path - green
+     * 'S' - start - Blue
+     * 'G' - goal - white
      */
-    public Mazebot(int maze[][], int n, int goalX, int goalY, int startX, int startY){
+    public Mazebot(char maze[][], int n, int goalX, int goalY){
         this.maze = maze;
         this.n = n;
         this.goalX = goalX;
         this.goalY = goalY;
-        view = new MazeView(n, maze);
-
-        findPath(startX, startY);
     }
 
+    //checks if the move is valid
     private boolean isValidMove(int row, int col){
         if (row < 0 || row >= n || col < 0 || col >= n)
             return false;
-        if(maze[row][col] == 1 || maze[row][col] == 2 || maze[row][col] == 4)
+        if(maze[row][col] == '#' || maze[row][col] == 'O' || maze[row][col] == 'S')
             return false;
         return true;
     }
 
-    private boolean findPath(int row, int col){
+    //find the path in the maze
+    public boolean findPath(int row, int col, MazeView view){
         if (row == goalX && col == goalY){
-            view.changeTile(row, col, 3, numVisited);
             return true;
         }
-        if (maze[row][col] != 4){
-            maze[row][col] = 2;
+        if (maze[row][col] != 'S'){
+            maze[row][col] = 'O';
             numVisited++;
-            view.changeTile(row, col, 2, numVisited);
+            view.changeTile(row, col, 'O', numVisited);
+            view.setNodesVisitedTxt(Integer.toString(numVisited));
         }
-
+        
         try {
             Thread.sleep(10);
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
+            //Auto generated catch block
             e.printStackTrace();
         } 
         if(isValidMove(row,col+1)){
-            if (findPath(row, col+1)){
-                numVisited++;
-                view.changeTile(row, col, 3, numVisited);
+            if (findPath(row, col+1, view)){
+                view.changeTile(row, col, 'X', numVisited);
                 return true;
             }
         }
         if(isValidMove(row,col-1)){
-            if (findPath(row, col-1)){
-                numVisited++;
-                view.changeTile(row, col, 3, numVisited);
+            if (findPath(row, col-1, view)){
+                view.changeTile(row, col, 'X', numVisited);
                 return true;
             }
         }
         if(isValidMove(row+1,col)){
-            if (findPath(row+1, col)){
-                numVisited++;
-                view.changeTile(row, col, 3, numVisited);
+            if (findPath(row+1, col, view)){
+                view.changeTile(row, col, 'X', numVisited);
                 return true;
             }
         }
         if(isValidMove(row-1,col)){
-            if (findPath(row-1, col)){
-                numVisited++;
-                view.changeTile(row, col, 3, numVisited);
+            if (findPath(row-1, col, view)){
+                view.changeTile(row, col, 'X', numVisited);
                 return true;
             }
         }
