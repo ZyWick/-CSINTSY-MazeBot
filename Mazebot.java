@@ -50,25 +50,29 @@ public class Mazebot {
         }
         if(isValidMove(row,col+1)){
             if (findPath(row, col+1, view)){
-                view.changeTile(row, col, 'X', numVisited);
+                if(maze[row][col] != 'S')
+                    view.changeTile(row, col, 'X', numVisited);
                 return true;
             }
         }
         if(isValidMove(row,col-1)){
             if (findPath(row, col-1, view)){
-                view.changeTile(row, col, 'X', numVisited);
+                if(maze[row][col] != 'S')
+                    view.changeTile(row, col, 'X', numVisited);
                 return true;
             }
         }
         if(isValidMove(row+1,col)){
             if (findPath(row+1, col, view)){
-                view.changeTile(row, col, 'X', numVisited);
+                if(maze[row][col] != 'S')
+                    view.changeTile(row, col, 'X', numVisited);
                 return true;
             }
         }
         if(isValidMove(row-1,col)){
             if (findPath(row-1, col, view)){
-                view.changeTile(row, col, 'X', numVisited);
+                if(maze[row][col] != 'S')
+                    view.changeTile(row, col, 'X', numVisited);
                 return true;
             }
         }
