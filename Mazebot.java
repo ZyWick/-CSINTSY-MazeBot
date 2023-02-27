@@ -41,13 +41,13 @@ public class Mazebot {
             view.changeTile(row, col, 'O', numVisited);
             view.setNodesVisitedTxt(Integer.toString(numVisited));
         }
-        
+
         try {
             Thread.sleep(10);
         } catch (InterruptedException e) {
             //Auto generated catch block
             e.printStackTrace();
-        } 
+        }
         if(isValidMove(row,col+1)){
             if (findPath(row, col+1, view)){
                 view.changeTile(row, col, 'X', numVisited);
@@ -72,7 +72,7 @@ public class Mazebot {
                 return true;
             }
         }
-        
+        numVisited++;
         return false;
     }
 }
