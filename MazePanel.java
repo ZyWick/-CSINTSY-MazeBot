@@ -1,6 +1,10 @@
 import java.util.ArrayList;
+
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 import java.awt.Color;
 import java.awt.GridLayout;
 
@@ -12,14 +16,16 @@ public class MazePanel extends JPanel{
     public MazePanel(char[][] map, int panelSize, int n){
         this.map = map;
         this.n = n;
-        this.setLayout(new GridLayout(n, n));
+        this.setLayout(new GridLayout(n, n, -1, -1));
+        this.setBorder(BorderFactory.createEmptyBorder(10, 2, 10, 2));
         this.setOpaque(true);
         labels = new ArrayList<JLabel>();
         int index = 0;
         for (int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
-                labels.add(new JLabel());
+                labels.add(new JLabel("", SwingConstants.CENTER));
                 labels.get(index).setOpaque(true);
+                labels.get(index).setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 changeColor(i, j, index);
                 this.add(labels.get(index));
                 index++;
@@ -40,7 +46,7 @@ public class MazePanel extends JPanel{
     //changes the tile color based on its status
     private void changeColor(int i, int j, int index){
         if (map[i][j] == '.'){ //could be a switch statement but i already coded it all lmao
-            labels.get(index).setBackground(Color.BLACK);
+            labels.get(index).setBackground(Color.white);
         }
         else if (map[i][j] == '#'){
             labels.get(index).setBackground(Color.RED);
@@ -55,7 +61,7 @@ public class MazePanel extends JPanel{
             labels.get(index).setBackground(Color.BLUE);
         }
         else if (map[i][j] == 'G'){
-            labels.get(index).setBackground(Color.WHITE);
+            labels.get(index).setBackground(Color.MAGENTA);
         }
     }
 
