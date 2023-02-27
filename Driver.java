@@ -57,7 +57,11 @@ public class Driver {
             boolean start = false;
             while(start == false){
                 if (bot.run == true){
-                    bot.findPath(startX, startY, view);
+                    
+                    if (bot.findPath(startX, startY, view))
+                        view.setGoalFound();
+                    else
+                        view.setGoalNotFoundTxt();
                     start = true;
                 }
                 thread.interrupt(); //I have no idea if this is good practice or not
