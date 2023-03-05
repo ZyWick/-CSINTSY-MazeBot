@@ -33,7 +33,9 @@ public class Mazebot {
     //find the path in the maze
     public boolean findPath(int row, int col, MazeView view){
         if (row == goalX && col == goalY){
+            //delete the next two lines if the goal state does not count as an explored state
             numVisited++;
+            view.setNodesVisitedTxt(Integer.toString(numVisited));
             return true;
         }
         if (maze[row][col] != 'S'){
