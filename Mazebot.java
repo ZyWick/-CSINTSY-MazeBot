@@ -5,6 +5,7 @@ public class Mazebot {
     private int goalY;
     private int numVisited = 0;
     public boolean run = false;
+    private int nonUnique = 0;
 
     /*
      * '.' - blank - black
@@ -33,16 +34,15 @@ public class Mazebot {
     //find the path in the maze
     public boolean findPath(int row, int col, MazeView view){
         if (row == goalX && col == goalY){
-            //delete the next two lines if the goal state does not count as an explored state
             numVisited++;
-            view.setNodesVisitedTxt(Integer.toString(numVisited));
+            view.setNodesVisitedTxt(Integer.toString(numVisited), Integer.toString(numVisited+nonUnique));
             return true;
         }
         if (maze[row][col] != 'S'){
             maze[row][col] = 'O';
             numVisited++;
             view.changeTile(row, col, 'O', numVisited);
-            view.setNodesVisitedTxt(Integer.toString(numVisited));
+            view.setNodesVisitedTxt(Integer.toString(numVisited), Integer.toString(numVisited+nonUnique));
         }
 
         try {
@@ -79,7 +79,8 @@ public class Mazebot {
                 return true;
             }
         }
-        numVisited++;
+        if(maze[row][col] != 'S')
+            nonUnique++;
         return false;
     }
 }
