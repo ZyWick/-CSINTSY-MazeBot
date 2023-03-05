@@ -57,8 +57,8 @@ public class MazeView {
         this.startButton.addActionListener(actionListener);
     }
 
-    public void setNodesVisitedTxt(String txt){
-        nodesVisited.setText(txt + " states visited");
+    public void setNodesVisitedTxt(String txt, String txt2){
+        nodesVisited.setText("<html>" + txt + " unique states visited<br/>" + txt2 + " states visited</html>");
     }
 
     public void setGoalNotFoundTxt(){
