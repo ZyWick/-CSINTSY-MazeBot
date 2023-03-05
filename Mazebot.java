@@ -35,6 +35,7 @@ public class Mazebot {
     public boolean findPath(int row, int col, MazeView view){
         if (row == goalX && col == goalY){
             numVisited++;
+            view.changeTile(row, col, 'G', numVisited);
             view.setNodesVisitedTxt(Integer.toString(numVisited), Integer.toString(numVisited+nonUnique));
             return true;
         }
@@ -43,6 +44,11 @@ public class Mazebot {
             numVisited++;
             view.changeTile(row, col, 'O', numVisited);
             view.setNodesVisitedTxt(Integer.toString(numVisited), Integer.toString(numVisited+nonUnique));
+        }
+        else{
+            numVisited++;
+            view.changeTile(row, col, 'S', numVisited);
+            view.setNodesVisitedTxt(Integer.toString(numVisited), Integer.toString(numVisited+nonUnique)); 
         }
 
         try {
