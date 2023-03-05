@@ -33,6 +33,7 @@ public class Mazebot {
     //find the path in the maze
     public boolean findPath(int row, int col, MazeView view){
         if (row == goalX && col == goalY){
+            numVisited++;
             return true;
         }
         if (maze[row][col] != 'S'){
