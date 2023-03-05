@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 
 public class MazePanel extends JPanel{
@@ -69,5 +70,6 @@ public class MazePanel extends JPanel{
     private void changeNum(int index, int num){
         if (labels.get(index).getText() == "")
             labels.get(index).setText(Integer.toString(num));
+            labels.get(index).setFont(new Font("Arial", Font.PLAIN, 30));
     }
 }
