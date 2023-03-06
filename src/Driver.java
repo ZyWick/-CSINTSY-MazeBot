@@ -39,8 +39,6 @@ public class Driver {
                         goalX = i;
                         goalY = j;
                     }
-                 
-                    System.out.print(map[i][j]);
                 }
                 System.out.println();
             }
@@ -71,7 +69,7 @@ public class Driver {
             }
 
         } catch (FileNotFoundException e) {
-            
+            System.out.println("File not found. Please place maze.txt in the folder where the code is being run from");
         }
     }
 }
