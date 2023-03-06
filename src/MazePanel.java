@@ -1,5 +1,6 @@
-import java.util.ArrayList;
+package src;
 
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
