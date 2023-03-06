@@ -71,6 +71,5 @@ public class MazePanel extends JPanel{
     private void changeNum(int index, int num){
         if (labels.get(index).getText() == "")
             labels.get(index).setText(Integer.toString(num));
-            labels.get(index).setFont(new Font("Arial", Font.PLAIN, 30));
     }
 }
