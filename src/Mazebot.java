@@ -51,7 +51,9 @@ public class Mazebot {
             view.changeTile(row, col, 'S', numVisited);
             view.setNodesVisitedTxt(Integer.toString(numVisited), Integer.toString(numVisited+nonUnique)); 
         }
-
+        
+        //pauses the program for 10ms, this helps to create the animation of the bot finding the goal state
+        //more useful for smaller mazes since the program will finish instantly w/o this
         try {
             Thread.sleep(10);
         } catch (InterruptedException e) {
