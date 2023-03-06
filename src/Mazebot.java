@@ -1,3 +1,4 @@
+package src;
 public class Mazebot {
     private char maze[][];
     private int n;
